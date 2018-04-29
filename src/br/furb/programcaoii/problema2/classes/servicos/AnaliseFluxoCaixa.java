@@ -5,10 +5,16 @@
  */
 package br.furb.programcaoii.problema2.classes.servicos;
 
+import br.furb.programcaoii.problema2.classes.ContaCorrente;
+
 /**
  *
  * @author silvinos
  */
 public class AnaliseFluxoCaixa {
+
+    public String toString(ContaCorrente cc) {
+        return "Cliente " +"Cliente " + cc.getChave() + "- Serviço de Análise de Fluxo de Caixa"; 
+    }
     
 }

@@ -1,7 +1,7 @@
-package problema2;
+package br.furb.programcaoii.problema2.classes;
 
 
-import problema2.ContaCorrente;
+import br.furb.programcaoii.problema2.classes.ContaCorrente;
 import java.text.DateFormat;
 import java.util.Date;
 

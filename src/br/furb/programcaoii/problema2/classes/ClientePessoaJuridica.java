@@ -1,4 +1,4 @@
-package problema2;
+package br.furb.programcaoii.problema2.classes;
 
 
 /**
