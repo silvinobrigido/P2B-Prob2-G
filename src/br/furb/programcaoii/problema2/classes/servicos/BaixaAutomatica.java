@@ -18,12 +18,15 @@ public class BaixaAutomatica implements ContaObserver {
         conta.addObserver(this);
     }
     @Override
-    public void update(Observable o, Object arg) {       
+    public void update(Observable o, Object arg) {    
+           if(arg instanceof ContaCorrente){
+               this.update((ContaCorrente) arg);
+           }
     }
     /*Mais detalhes em https://www.devmedia.com.br/padrao-de-projeto-observer-em-java/26163*/
 
     @Override
     public void update(ContaCorrente conta) {
-        
+        System.out.println("Realizada baixa automática na Conta: "+ conta.getChave());
     }
 }

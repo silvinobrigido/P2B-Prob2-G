@@ -14,7 +14,7 @@ import java.util.Observer;
 public interface ContaObserver extends Observer{
     //teste 
      @Override
-     public default void update(Observable observable, Object o) {        
+     public default void update(Observable observable, Object o) {                 
      }
      public void update(ContaCorrente conta);
      
