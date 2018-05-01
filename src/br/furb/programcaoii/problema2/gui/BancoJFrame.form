@@ -78,37 +78,49 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="btCliente" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="edTelCelular" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lbCpf" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="edCpf" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lbCnpj" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="edCnpj" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="edTelFixo" min="-2" pref="72" max="-2" attributes="0"/>
+                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="edNomeCliente" min="-2" pref="189" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="cbPessoaJuridica" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="edTelCelular" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="edTelFixo" min="-2" pref="72" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="edServidorJms" min="-2" max="-2" attributes="0"/>
-                                              <Component id="edCnpj" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="rbPessoaFisica" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="rbPessoaJuridica" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lbJms" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="edServidorJms" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="174" max="32767" attributes="0"/>
+                                  <EmptySpace pref="184" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -132,12 +144,26 @@
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cbPessoaJuridica" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="rbPessoaFisica" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbPessoaJuridica" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="edCpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbCpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="edCnpj" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="edServidorJms" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="116" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lbCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="edCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lbJms" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="edServidorJms" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="97" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -180,11 +206,6 @@
                     <Property name="text" type="java.lang.String" value="Tel Celular: "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="cbPessoaJuridica">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Pessoa Jur&#xed;dica"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JFormattedTextField" name="edCnpj">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jFormattedTextField2"/>
@@ -193,6 +214,48 @@
                 <Component class="javax.swing.JTextField" name="edServidorJms">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jTextField1"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbCnpj">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="CNPJ:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbJms">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Servidor JMS:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbPessoaFisica">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="meuRadioGroup"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Pessoa F&#xed;sica"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbPessoaFisicaActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbPessoaJuridica">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="meuRadioGroup"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Pessoa Jur&#xed;dica"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbPessoaJuridicaActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JFormattedTextField" name="edCpf">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jFormattedTextField1"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbCpf">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="CPF:"/>
                   </Properties>
                 </Component>
               </SubComponents>

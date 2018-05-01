@@ -23,6 +23,12 @@ public class BancoJFrame extends javax.swing.JFrame {
     public BancoJFrame() {
         initComponents();
         this.setTitle("Banco Teste");
+        edCpf.setVisible(false);
+        lbCpf.setVisible(false);
+        edCnpj.setVisible(false);        
+        lbCnpj.setVisible(false);
+        edServidorJms.setVisible(false);
+        lbJms.setVisible(false);
     }
     
 
@@ -44,9 +50,14 @@ public class BancoJFrame extends javax.swing.JFrame {
         edTelFixo = new javax.swing.JFormattedTextField();
         edTelCelular = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
-        cbPessoaJuridica = new javax.swing.JCheckBox();
         edCnpj = new javax.swing.JFormattedTextField();
         edServidorJms = new javax.swing.JTextField();
+        lbCnpj = new javax.swing.JLabel();
+        lbJms = new javax.swing.JLabel();
+        rbPessoaFisica = new javax.swing.JRadioButton();
+        rbPessoaJuridica = new javax.swing.JRadioButton();
+        edCpf = new javax.swing.JFormattedTextField();
+        lbCpf = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         comboboxCliente = new javax.swing.JComboBox();
@@ -93,11 +104,33 @@ public class BancoJFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Tel Celular: ");
 
-        cbPessoaJuridica.setText("Pessoa Jurídica");
-
         edCnpj.setText("jFormattedTextField2");
 
         edServidorJms.setText("jTextField1");
+
+        lbCnpj.setText("CNPJ:");
+
+        lbJms.setText("Servidor JMS:");
+
+        meuRadioGroup.add(rbPessoaFisica);
+        rbPessoaFisica.setText("Pessoa Física");
+        rbPessoaFisica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPessoaFisicaActionPerformed(evt);
+            }
+        });
+
+        meuRadioGroup.add(rbPessoaJuridica);
+        rbPessoaJuridica.setText("Pessoa Jurídica");
+        rbPessoaJuridica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPessoaJuridicaActionPerformed(evt);
+            }
+        });
+
+        edCpf.setText("jFormattedTextField1");
+
+        lbCpf.setText("CPF:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -108,28 +141,39 @@ public class BancoJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btCliente))
+                        .addComponent(btCliente)
+                        .addGap(10, 10, 10))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(edTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lbCpf)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(edCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lbCnpj)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(edCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(edTelFixo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(edNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbPessoaJuridica)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel1))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(edTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(edTelFixo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(edServidorJms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(edCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 174, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(rbPessoaFisica)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rbPessoaJuridica))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lbJms)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(edServidorJms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(184, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,12 +192,22 @@ public class BancoJFrame extends javax.swing.JFrame {
                     .addComponent(edTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbPessoaJuridica)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbPessoaFisica)
+                    .addComponent(rbPessoaJuridica))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbCpf))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(edCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(edServidorJms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbCnpj)
+                    .addComponent(edCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbJms)
+                    .addComponent(edServidorJms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         Conta.addTab("Cliente", jPanel3);
@@ -386,10 +440,10 @@ public class BancoJFrame extends javax.swing.JFrame {
 
     private void btClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteActionPerformed
         Object cliente = null;
-        if (cbPessoaJuridica.isSelected()) {
+        if (rbPessoaJuridica.isSelected()) {
           clientePj = new ClientePessoaJuridica(edNomeCliente.getText(), edTelCelular.getText(), edTelFixo.getText(), edCnpj.getText(), edServidorJms.getText());
         }else {
-            
+          clientePf = new ClientePessoaFisica(edNomeCliente.getText(), edTelCelular.getText(), edTelFixo.getText(), edCpf.getText());
         }
     }//GEN-LAST:event_btClienteActionPerformed
 
@@ -412,6 +466,24 @@ public class BancoJFrame extends javax.swing.JFrame {
     private void btlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimparActionPerformed
         txtResultados1.setText("");
     }//GEN-LAST:event_btlimparActionPerformed
+
+    private void rbPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPessoaFisicaActionPerformed
+        edCpf.setVisible(true);
+        lbCpf.setVisible(true);
+        edCnpj.setVisible(false);        
+        lbCnpj.setVisible(false);
+        edServidorJms.setVisible(false);
+        lbJms.setVisible(false);
+    }//GEN-LAST:event_rbPessoaFisicaActionPerformed
+
+    private void rbPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPessoaJuridicaActionPerformed
+        edCpf.setVisible(false);
+        lbCpf.setVisible(false);
+        edCnpj.setVisible(true);
+        lbCnpj.setVisible(true);
+        edServidorJms.setVisible(true);
+        lbJms.setVisible(true);
+    }//GEN-LAST:event_rbPessoaJuridicaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,11 +530,11 @@ public class BancoJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btlimpar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JCheckBox cbPessoaJuridica;
     private javax.swing.JCheckBox checkboxDeposito;
     private javax.swing.JComboBox comboboxCliente;
     private javax.swing.JFormattedTextField edCnpj;
     private javax.swing.JTextField edConsultaNumeroConta;
+    private javax.swing.JFormattedTextField edCpf;
     private javax.swing.JFormattedTextField edLimite;
     private javax.swing.JTextField edNomeCliente;
     private javax.swing.JTextField edNumContaMovimento;
@@ -489,7 +561,12 @@ public class BancoJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbCnpj;
+    private javax.swing.JLabel lbCpf;
+    private javax.swing.JLabel lbJms;
     private javax.swing.ButtonGroup meuRadioGroup;
+    private javax.swing.JRadioButton rbPessoaFisica;
+    private javax.swing.JRadioButton rbPessoaJuridica;
     private javax.swing.JTextArea txtMovimento;
     private javax.swing.JTextArea txtResultados1;
     // End of variables declaration//GEN-END:variables
