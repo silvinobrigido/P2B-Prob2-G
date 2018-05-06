@@ -18,6 +18,9 @@ public class BancoView extends javax.swing.JFrame implements View {
      */
     public BancoView() {
         initComponents();
+        
+        ConsoleServicosView consoleServicosView = ViewFactory.getView(ConsoleServicosView.class);
+        consoleServicosView.setVisible(true);
     }
 
     /**

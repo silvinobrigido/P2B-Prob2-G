@@ -32,7 +32,7 @@
                   <Component id="jLabel1" alignment="0" pref="776" max="32767" attributes="0"/>
                   <Component id="jLabel2" alignment="0" pref="776" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="btAdicionar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btEditar" min="-2" max="-2" attributes="0"/>
@@ -53,14 +53,14 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="462" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="468" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btAdicionar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
