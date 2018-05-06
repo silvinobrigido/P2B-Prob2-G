@@ -52,8 +52,8 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
             // criando máscaras
             mascaraCNPJ = new MaskFormatter("##.###.###/####-##");
             mascaraCPF = new MaskFormatter("###.###.###-##");
-            mascaraTelefoneFixo = new MaskFormatter("+## ####-####");
-            mascaraTelefoneCelular = new MaskFormatter("+## #####-####");
+            mascaraTelefoneFixo = new MaskFormatter("(##) ####-####");
+            mascaraTelefoneCelular = new MaskFormatter("(##) #####-####");
         } catch (ParseException exc) {
         }
         

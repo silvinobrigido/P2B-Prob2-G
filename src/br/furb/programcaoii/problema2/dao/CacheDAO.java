@@ -28,7 +28,7 @@ public abstract class CacheDAO<O extends Object> implements DAO<O> {
     
     @Override
     public Set<O> getObjetosPersistidos() {
-        carregarCache();
+  //      carregarCache();
         
         String nomeClasse = getNomeClasse(getEntityClass());
         Set<O> objetos = (Set<O>) map.get(nomeClasse);
@@ -51,7 +51,7 @@ public abstract class CacheDAO<O extends Object> implements DAO<O> {
         
         objetos.add(obj);
         
-        salvarCache();
+ //       salvarCache();
     }
 
     @Override
@@ -60,7 +60,7 @@ public abstract class CacheDAO<O extends Object> implements DAO<O> {
         
         objetos.remove(obj);
         
-        salvarCache();
+   //     salvarCache();
     }
     
     private void salvarCache() {
