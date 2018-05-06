@@ -6,7 +6,10 @@ package br.furb.programcaoii.problema2.classes;
  *
  * @author marcel
  */
-public class ClientePessoaFisica extends Cliente{
+public class ClientePessoaFisica extends Cliente {
+    
+    private static final long serialVersionUID = 12312312L;
+    
     private String cpf;
 
     public ClientePessoaFisica(String nome, String telCelular, String telFixo, String cpf) {

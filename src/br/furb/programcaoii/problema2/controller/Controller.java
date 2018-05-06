@@ -25,7 +25,7 @@ public abstract class Controller<O extends Object, D extends DAO<O>> {
         return dao.buscar(campo);
     }
     
-    public Set<Object> getObjetosPersistidos() {
+    public Set<O> getObjetosPersistidos() {
         return dao.getObjetosPersistidos();
     }
 }

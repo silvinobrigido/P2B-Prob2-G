@@ -1,14 +1,15 @@
 package br.furb.programcaoii.problema2.classes;
 
-
-import br.furb.programcaoii.problema2.classes.ContaCorrente;
 import java.util.Date;
 
 /**
  *
  * @author marcel
  */
-public class OperacaoTransferencia extends Operacao{
+public class OperacaoTransferencia extends Operacao {
+    
+    private static final long serialVersionUID = 12312317L;
+    
     private ContaCorrente contraPartida;
 
     public OperacaoTransferencia(double valor, double saldoAnterior, TipoOperacao tipo, Date dataHora, ContaCorrente conta, ContaCorrente contraPartida) {

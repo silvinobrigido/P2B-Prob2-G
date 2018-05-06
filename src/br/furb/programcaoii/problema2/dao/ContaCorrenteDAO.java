@@ -8,13 +8,12 @@ import java.util.Set;
  *
  * @author ariel
  */
-public class ContaCorrenteDAO extends DAO<ContaCorrente> {
+public class ContaCorrenteDAO extends CacheDAO<ContaCorrente> {
 
     @Override
     public ContaCorrente buscar(String campo) {
-        Set<Object> contas = getObjetosPersistidos();
-        for (Object obj : contas) {
-            ContaCorrente contaCorrente = (ContaCorrente) obj;
+        Set<ContaCorrente> contas = getObjetosPersistidos();
+        for (ContaCorrente contaCorrente : contas) {
             
             if (String.valueOf(contaCorrente.getNumero()).contains(campo)) {
                 return contaCorrente;
@@ -23,9 +22,9 @@ public class ContaCorrenteDAO extends DAO<ContaCorrente> {
         
         throw new RegistroNaoEncontradoException();
     }
-    
+
     @Override
-    public Set<Object> getObjetosPersistidos() {
-        return CacheDAO.getObjetosPersistidos(ContaCorrente.class);
+    public Class<ContaCorrente> getEntityClass() {
+        return ContaCorrente.class;
     }
 }

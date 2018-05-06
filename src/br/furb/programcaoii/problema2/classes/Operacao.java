@@ -2,6 +2,7 @@ package br.furb.programcaoii.problema2.classes;
 
 
 import br.furb.programcaoii.problema2.classes.ContaCorrente;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -10,7 +11,10 @@ import java.util.Date;
  *
  * @author marcel
  */
-public class Operacao {
+public class Operacao implements Serializable {
+    
+    private static final long serialVersionUID = 12312315L;
+    
     private double valor;
     private double saldoAnterior;
     private TipoOperacao tipo;

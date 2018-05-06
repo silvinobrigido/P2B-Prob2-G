@@ -7,21 +7,13 @@ import java.util.Set;
  * @author ariel
  * @param <O>
  */
-public abstract class DAO<O extends Object> {
+public interface DAO<O extends Object> {
     
-    public void salvar(O obj) {
-        Set<Object> objetos = getObjetosPersistidos();
-        
-        objetos.add(obj);
-    }
+    void salvar(O obj);
     
-    public void excluir(O obj) {
-        Set<Object> objetos = getObjetosPersistidos();
-        
-        objetos.remove(obj);
-    }
+    void excluir(O obj);
     
-    public abstract O buscar(String campo);
+    O buscar(String campo);
     
-    public abstract Set<Object> getObjetosPersistidos();
+    Set<O> getObjetosPersistidos();
 }

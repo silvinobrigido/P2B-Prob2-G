@@ -9,11 +9,11 @@ import java.util.Set;
  *
  * @author ariel
  */
-public class ClienteDAO extends DAO<Cliente> {
+public class ClienteDAO extends CacheDAO<Cliente> {
 
     @Override
     public Cliente buscar(String campo) {
-        Set<Object> clientes = getObjetosPersistidos();
+        Set<Cliente> clientes = getObjetosPersistidos();
         for (Object obj : clientes) {
             Cliente cliente = (Cliente) obj;
             
@@ -24,10 +24,10 @@ public class ClienteDAO extends DAO<Cliente> {
         
         throw new RegistroNaoEncontradoException();
     }
-    
+
     @Override
-    public Set<Object> getObjetosPersistidos() {
-        return CacheDAO.getObjetosPersistidos(Cliente.class);
+    public Class<Cliente> getEntityClass() {
+        return Cliente.class;
     }
     
 }

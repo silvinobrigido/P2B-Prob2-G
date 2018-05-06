@@ -4,6 +4,7 @@ package br.furb.programcaoii.problema2.classes;
  * Esta classe oferece as funcionalidades básicas para atender ao Problema 2.
  */
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 
@@ -11,7 +12,10 @@ import java.util.HashMap;
  *
  * @author marcel
  */
-public abstract class Cliente {
+public abstract class Cliente implements Serializable {
+    
+    private static final long serialVersionUID = 12312319L;
+    
     private String nome;
     private String telCelular;
     private String telFixo;

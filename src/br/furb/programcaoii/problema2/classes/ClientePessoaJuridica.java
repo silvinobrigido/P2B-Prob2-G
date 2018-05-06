@@ -5,7 +5,10 @@ package br.furb.programcaoii.problema2.classes;
  *
  * @author marcel
  */
-public class ClientePessoaJuridica extends Cliente{
+public class ClientePessoaJuridica extends Cliente {
+    
+    private static final long serialVersionUID = 12312313L;
+    
     private String cnpj;
     private String servidorJMS;
 

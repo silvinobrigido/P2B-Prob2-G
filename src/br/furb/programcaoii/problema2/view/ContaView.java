@@ -11,6 +11,7 @@ import br.furb.programcaoii.problema2.controller.ClienteController;
 import br.furb.programcaoii.problema2.factory.ControllerFactory;
 import br.furb.programcaoii.problema2.util.Util;
 import java.text.ParseException;
+import java.util.Set;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -66,6 +67,11 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         txtSaldo = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setText("Cliente");
 
@@ -142,6 +148,10 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        atualizarClientes();
+    }//GEN-LAST:event_formWindowActivated
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSalvar;
     private javax.swing.JComboBox<String> cbCliente;
@@ -162,5 +172,12 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         txtAgencia.setText(String.valueOf(contaCorrente.getAgencia()));
         txtNumero.setText(String.valueOf(contaCorrente.getNumero()));
         txtSaldo.setText(String.valueOf(contaCorrente.getSaldo()));
+    }
+
+    private void atualizarClientes() {
+        cbCliente.removeAllItems();
+        
+        Set<Cliente> clientes = ControllerFactory.getController(ClienteController.class).getObjetosPersistidos();
+        clientes.stream().map(obj -> (Cliente) obj).filter(cliente -> null != cliente.getNome() && !cliente.getNome().isEmpty()).forEach(cliente -> cbCliente.addItem(cliente.getNome()));
     }
 }

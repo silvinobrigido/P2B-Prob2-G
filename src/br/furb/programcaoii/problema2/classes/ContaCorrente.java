@@ -1,6 +1,7 @@
 package br.furb.programcaoii.problema2.classes;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,10 @@ import java.util.List;
  *
  * @author marcel
  */
-public class ContaCorrente {
+public class ContaCorrente implements Serializable {
+    
+    private static final long serialVersionUID = 12312314L;
+    
     private int numero;
     private int agencia;
     private Cliente cliente;

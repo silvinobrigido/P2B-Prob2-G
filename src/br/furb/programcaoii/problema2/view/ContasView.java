@@ -5,11 +5,7 @@
  */
 package br.furb.programcaoii.problema2.view;
 
-import br.furb.programcaoii.problema2.classes.Cliente;
-import br.furb.programcaoii.problema2.classes.ClientePessoaFisica;
-import br.furb.programcaoii.problema2.classes.ClientePessoaJuridica;
 import br.furb.programcaoii.problema2.classes.ContaCorrente;
-import br.furb.programcaoii.problema2.controller.ClienteController;
 import br.furb.programcaoii.problema2.controller.ContaCorrenteController;
 import br.furb.programcaoii.problema2.factory.ControllerFactory;
 import br.furb.programcaoii.problema2.factory.ViewFactory;
@@ -190,15 +186,14 @@ public class ContasView extends javax.swing.JFrame implements View {
     }
     
     private void atualizarTabela() {
-        Set<Object> contas = ControllerFactory.getController(ContaCorrenteController.class).getObjetosPersistidos();
+        Set<ContaCorrente> contas = ControllerFactory.getController(ContaCorrenteController.class).getObjetosPersistidos();
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         for (int idx = 0; idx < model.getRowCount(); idx++) {
             model.removeRow(idx);
         }
         
-        for (Object obj : contas) {
-            ContaCorrente contaCorrente = (ContaCorrente) obj;
+        for (ContaCorrente contaCorrente : contas) {
             model.addRow(new Object[] {contaCorrente.getCliente().getNome() , contaCorrente.getNumero(), contaCorrente.getAgencia(), contaCorrente.getSaldo()});
         }
     }
