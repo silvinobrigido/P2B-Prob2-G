@@ -9,13 +9,13 @@ import br.furb.programcaoii.problema2.classes.ContaCorrente;
 import java.util.Observable;
 import java.util.Observer;
 
-
+//OKK
 public class BaixaAutomatica implements ContaObserver {
-    Observable conta;
+    private Observable contaObservable;
 
     public BaixaAutomatica(Observable conta) {
-        this.conta = conta;
-        conta.addObserver(this);
+        this.contaObservable = conta;
+        this.contaObservable.addObserver(this);
     }
     @Override
     public void update(Observable o, Object arg) {    
@@ -27,6 +27,6 @@ public class BaixaAutomatica implements ContaObserver {
 
     @Override
     public void update(ContaCorrente conta) {
-        System.out.println("Realizada baixa automática na Conta: "+ conta.getChave());
+        System.out.println("Realizada baixa automática na Conta: "+ conta.getChave() +", Cliente "+ conta.getCliente());
     }
 }
