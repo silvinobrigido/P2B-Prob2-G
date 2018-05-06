@@ -189,8 +189,8 @@ public class ContasView extends javax.swing.JFrame implements View {
         Set<ContaCorrente> contas = ControllerFactory.getController(ContaCorrenteController.class).getObjetosPersistidos();
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        for (int idx = 0; idx < model.getRowCount(); idx++) {
-            model.removeRow(idx);
+        while (model.getRowCount() > 0){
+            model.removeRow(0);
         }
         
         for (ContaCorrente contaCorrente : contas) {

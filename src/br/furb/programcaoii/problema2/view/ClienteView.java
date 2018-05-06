@@ -286,5 +286,8 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
             rbPessoaJuridica.setSelected(true);
         }
         
+        rbPessoaJuridica.setEnabled(false);
+        rbPessoaFisica.setEnabled(false);
+        
     }
 }

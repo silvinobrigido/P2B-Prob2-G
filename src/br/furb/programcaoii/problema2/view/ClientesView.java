@@ -204,9 +204,9 @@ public class ClientesView extends javax.swing.JFrame implements View<Cliente> {
     private void atualizarTabela() {
         Set<Cliente> clientes = ControllerFactory.getController(ClienteController.class).getObjetosPersistidos();
 
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        for (int idx = 0; idx < model.getRowCount(); idx++) {
-            model.removeRow(idx);
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();   
+        while (model.getRowCount() > 0){
+            model.removeRow(0);
         }
         for (Cliente cliente : clientes) {
             String cpfCnpj = (cliente instanceof ClientePessoaFisica) ? ((ClientePessoaFisica) cliente).getCpf() : ((ClientePessoaJuridica) cliente).getCnpj();
