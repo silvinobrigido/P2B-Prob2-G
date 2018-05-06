@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.furb.programcaoii.problema2.classes.servicos;
 
 import br.furb.programcaoii.problema2.classes.Cliente;
@@ -15,13 +10,14 @@ import java.util.Observable;
  *
  * @author User
  */
-public class Notificacao implements ContaObserver{
+public class Notificacao extends ContaCorrenteObserver {
     
     private TipoNotificacao tipoNotificacao;
     private Cliente cliente;
     private String mensagem;
- //ajustar esta classe
-    public Notificacao(TipoNotificacao tipoNotificacao, Cliente c, ContaCorrente CC) {
+
+    
+    public Notificacao(TipoNotificacao tipoNotificacao, Cliente c, ContaCorrente cc) {
         this.tipoNotificacao = tipoNotificacao;        
         this.cliente = c;
     }

@@ -1,7 +1,5 @@
 package br.furb.programcaoii.problema2.classes;
 
-
-import br.furb.programcaoii.problema2.classes.ContaCorrente;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Date;

@@ -68,4 +68,9 @@ public class ConsoleServicosView extends javax.swing.JFrame implements View {
     @Override
     public void setEntidade(Object entidade) {
     }
+
+    public void adicionarMensagem(String string) {
+        memo.append(string);
+        memo.append("\n\r");
+    }
 }

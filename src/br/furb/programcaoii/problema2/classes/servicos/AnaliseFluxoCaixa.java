@@ -7,12 +7,13 @@ package br.furb.programcaoii.problema2.classes.servicos;
 
 import br.furb.programcaoii.problema2.classes.ContaCorrente;
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
  * @author silvinos
  */
-public class AnaliseFluxoCaixa implements ContaObserver{
+public class AnaliseFluxoCaixa implements Observer {
 
      private Observable contaObservable;
 
@@ -27,12 +28,5 @@ public class AnaliseFluxoCaixa implements ContaObserver{
                this.update((ContaCorrente) arg);
            }
     }
-    
-    @Override
-    public void update(ContaCorrente conta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    public String toString(ContaCorrente cc) {
-        return "Cliente " +"Cliente " + cc.getChave() + "- Serviço de Análise de Fluxo de Caixa"; 
-    }
+
 }

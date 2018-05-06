@@ -8,6 +8,7 @@ package br.furb.programcaoii.problema2.view;
 import br.furb.programcaoii.problema2.classes.Cliente;
 import br.furb.programcaoii.problema2.classes.ContaCorrente;
 import br.furb.programcaoii.problema2.controller.ClienteController;
+import br.furb.programcaoii.problema2.controller.ContaCorrenteController;
 import br.furb.programcaoii.problema2.factory.ControllerFactory;
 import br.furb.programcaoii.problema2.util.Util;
 import java.text.ParseException;
@@ -36,14 +37,12 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
             // criando máscaras
             mascaraNumero = new MaskFormatter("#######-#");
             mascaraAgencia = new MaskFormatter("####-#");
-            mascaraSaldo = new MaskFormatter("R$");
 
         } catch (ParseException exc) {
         }
 
         mascaraNumero.install(txtNumero);
         mascaraAgencia.install(txtAgencia);
-        mascaraSaldo.install(txtSaldo);
         
     }
 
@@ -60,11 +59,9 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         btSalvar = new javax.swing.JButton();
         txtNumero = new javax.swing.JFormattedTextField();
         txtAgencia = new javax.swing.JFormattedTextField();
-        txtSaldo = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -78,8 +75,6 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         jLabel2.setText("Número");
 
         jLabel3.setText("Agência");
-
-        jLabel4.setText("Saldo");
 
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -103,10 +98,8 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtSaldo))
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -124,11 +117,7 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addComponent(btSalvar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -137,14 +126,22 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        int conta = Util.castInt(txtNumero.getText());
-        int agencia = Util.castInt(txtAgencia.getText());
-        double saldo = Util.castDouble(txtSaldo.getText());
-        Cliente cliente = ControllerFactory.getController(ClienteController.class).buscar((String) cbCliente.getSelectedItem());
-        
-        if (null == contaCorrente) {
-            contaCorrente = new ContaCorrente(conta, agencia);
-            contaCorrente.setCliente(cliente);
+        try {
+            Integer conta = Util.castInt(txtNumero.getText().replaceAll("[,.-]", ""));
+            Integer agencia = Util.castInt(txtAgencia.getText().replaceAll("[,.-]", ""));
+            Cliente cliente = ControllerFactory.getController(ClienteController.class).buscar((String) cbCliente.getSelectedItem());
+
+            if (null == contaCorrente) {
+                contaCorrente = new ContaCorrente(conta, agencia);
+                contaCorrente.setCliente(cliente);
+            }
+            contaCorrente.setAgencia(agencia);
+            contaCorrente.setNumero(conta);
+
+            ControllerFactory.getController(ContaCorrenteController.class).salvar(contaCorrente);
+            this.setVisible(false);
+        } catch (Exception e) {
+            abrirDialogoErro(this, e);
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
@@ -158,10 +155,8 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JFormattedTextField txtAgencia;
     private javax.swing.JFormattedTextField txtNumero;
-    private javax.swing.JFormattedTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -171,7 +166,6 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         cbCliente.setSelectedItem(contaCorrente.getCliente().getNome());
         txtAgencia.setText(String.valueOf(contaCorrente.getAgencia()));
         txtNumero.setText(String.valueOf(contaCorrente.getNumero()));
-        txtSaldo.setText(String.valueOf(contaCorrente.getSaldo()));
     }
 
     private void atualizarClientes() {

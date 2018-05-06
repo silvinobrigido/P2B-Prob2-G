@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Observable;
 
 /*
  * Esta classe oferece as funcionalidades básicas para atender ao Problema 2.
@@ -14,7 +15,7 @@ import java.util.List;
  *
  * @author marcel
  */
-public class ContaCorrente implements Serializable {
+public class ContaCorrente extends Observable implements Serializable {
     
     private static final long serialVersionUID = 12312314L;
     
@@ -22,8 +23,8 @@ public class ContaCorrente implements Serializable {
     private int agencia;
     private Cliente cliente;
     private double saldo = 0;
-    private List<Operacao> operacoes = new ArrayList();
-
+    private List<Operacao> operacoes = new ArrayList<>();
+    
     public ContaCorrente(int numero, int agencia) {
         this.setNumero(numero);
         this.setAgencia(agencia);
@@ -38,13 +39,13 @@ public class ContaCorrente implements Serializable {
             throw new IllegalArgumentException("Saldo insuficiente para o saque");
         }
         Operacao oper = new Operacao(valor,this.getSaldo(),TipoOperacao.SAIDA,new Date(),this);
-        operacoes.add(oper);
+        adicionarOperacao(oper);
         this.saldo -= valor;
     }
     
     public void depositar(double valor){
         Operacao oper = new Operacao(valor,this.getSaldo(),TipoOperacao.ENTRADA,new Date(),this);
-        operacoes.add(oper);
+        adicionarOperacao(oper);
         this.saldo += valor;
     }    
     
@@ -54,13 +55,13 @@ public class ContaCorrente implements Serializable {
         }        
         destino.receberTransferencia(valor, this);
         Operacao oper = new OperacaoTransferencia(valor,this.getSaldo(),TipoOperacao.SAIDA,new Date(),this,destino);
-        operacoes.add(oper);
+        adicionarOperacao(oper);
         this.saldo -= valor;
     }   
     
     private void receberTransferencia(double valor, ContaCorrente origem){    
         Operacao oper = new OperacaoTransferencia(valor,this.getSaldo(),TipoOperacao.ENTRADA,new Date(),this,origem);
-        operacoes.add(oper);
+        adicionarOperacao(oper);
         this.saldo += valor;        
     }
     
@@ -95,5 +96,12 @@ public class ContaCorrente implements Serializable {
     @Override
     public String toString(){
         return this.getChave();
+    }
+    
+    protected void adicionarOperacao(Operacao operacao) {
+        operacoes.add(operacao);
+        setChanged();
+        
+        notifyObservers(operacao);
     }
 }
