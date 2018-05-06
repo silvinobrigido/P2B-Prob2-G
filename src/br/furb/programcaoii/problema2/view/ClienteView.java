@@ -20,18 +20,18 @@ import javax.swing.text.MaskFormatter;
  * @author ariel
  */
 public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
-
+    
     private Cliente cliente;
     private MaskFormatter mascaraCNPJ = null;
     private MaskFormatter mascaraCPF = null;
     private MaskFormatter mascaraTelefoneFixo = null;
     private MaskFormatter mascaraTelefoneCelular = null;
-
+    
     private void habilitarDesabilitarServidorJMS() {
         txtServidorJMS.setVisible(rbPessoaJuridica.isSelected());
         lblServidor.setVisible(rbPessoaJuridica.isSelected());
     }
-
+    
     private void alterarMascaraCPFCNPJ(String tipoPessoa) {
         if (tipoPessoa.equalsIgnoreCase("PF")) {
             mascaraCPF.install(txtCpfCnpj);
@@ -46,7 +46,8 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
     public ClienteView() {
         initComponents();
         habilitarDesabilitarServidorJMS();
-
+        
+        
         try {
             // criando máscaras
             mascaraCNPJ = new MaskFormatter("##.###.###/####-##");
@@ -55,10 +56,11 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
             mascaraTelefoneCelular = new MaskFormatter("+## #####-####");
         } catch (ParseException exc) {
         }
-
+        
+        rbPessoaFisica.setSelected(true);
         mascaraTelefoneFixo.install(txtTelefoneFixo);
         mascaraTelefoneCelular.install(txtTelefoneCelular);
-
+        
     }
 
     /**
@@ -269,11 +271,11 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
     @Override
     public void setEntidade(Cliente entidade) {
         this.cliente = entidade;
-
+        
         txtNome.setText(cliente.getNome());
         txtTelefoneCelular.setText(cliente.getTelCelular());
         txtTelefoneFixo.setText(cliente.getTelFixo());
-
+        
         if (cliente instanceof ClientePessoaFisica) {
             ClientePessoaFisica clientePessoaFisica = (ClientePessoaFisica) cliente;
             txtCpfCnpj.setText(clientePessoaFisica.getCpf());
@@ -283,6 +285,6 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
             txtCpfCnpj.setText(clientePessoaJuridica.getCnpj());
             rbPessoaJuridica.setSelected(true);
         }
-
+        
     }
 }
