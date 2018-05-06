@@ -1,12 +1,13 @@
 package br.furb.programcaoii.problema2.controller;
 
 import br.furb.programcaoii.problema2.dao.DAO;
-import java.util.List;
 import java.util.Set;
 
 /**
  *
  * @author ariel
+ * @param <O>
+ * @param <D>
  */
 public abstract class Controller<O extends Object, D extends DAO<O>> {
     

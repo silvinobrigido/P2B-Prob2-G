@@ -1,13 +1,9 @@
 package br.furb.programcaoii.problema2.factory;
 
-import br.furb.programcaoii.problema2.view.ClienteView;
 import br.furb.programcaoii.problema2.view.View;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

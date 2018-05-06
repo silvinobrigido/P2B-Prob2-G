@@ -80,7 +80,7 @@ public class ContaCorrente {
         return cliente;
     }
 
-    protected void setCliente(Cliente cliente){
+    public void setCliente(Cliente cliente){
         this.cliente = cliente;
     }
     

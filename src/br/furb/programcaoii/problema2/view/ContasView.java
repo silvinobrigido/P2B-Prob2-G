@@ -6,11 +6,15 @@
 package br.furb.programcaoii.problema2.view;
 
 import br.furb.programcaoii.problema2.classes.Cliente;
+import br.furb.programcaoii.problema2.classes.ClientePessoaFisica;
+import br.furb.programcaoii.problema2.classes.ClientePessoaJuridica;
 import br.furb.programcaoii.problema2.classes.ContaCorrente;
 import br.furb.programcaoii.problema2.controller.ClienteController;
 import br.furb.programcaoii.problema2.controller.ContaCorrenteController;
 import br.furb.programcaoii.problema2.factory.ControllerFactory;
 import br.furb.programcaoii.problema2.factory.ViewFactory;
+import java.util.Set;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -142,6 +146,8 @@ public class ContasView extends javax.swing.JFrame implements View {
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         ContaCorrente contaCorrente = getContaCorrenteSelecionada();
         ControllerFactory.getController(ContaCorrenteController.class).excluir(contaCorrente);
+        
+        atualizarTabela();
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
@@ -157,41 +163,6 @@ public class ContasView extends javax.swing.JFrame implements View {
         ContaView contaView = ViewFactory.getView(ContaView.class, false);
         contaView.setVisible(true);
     }//GEN-LAST:event_btAdicionarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ContasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ContasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ContasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ContasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ContasView().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;
@@ -215,5 +186,27 @@ public class ContasView extends javax.swing.JFrame implements View {
 
     @Override
     public void setEntidade(Object entidade) {
+        
+    }
+    
+    private void atualizarTabela() {
+        Set<Object> contas = ControllerFactory.getController(ContaCorrenteController.class).getObjetosPersistidos();
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        for (int idx = 0; idx < model.getRowCount(); idx++) {
+            model.removeRow(idx);
+        }
+        
+        for (Object obj : contas) {
+            ContaCorrente contaCorrente = (ContaCorrente) obj;
+            model.addRow(new Object[] {contaCorrente.getCliente().getNome() , contaCorrente.getNumero(), contaCorrente.getAgencia(), contaCorrente.getSaldo()});
+        }
+    }
+    
+    @Override
+    public void setVisible(boolean b) {
+        super.setVisible(b);
+        
+        atualizarTabela();
     }
 }

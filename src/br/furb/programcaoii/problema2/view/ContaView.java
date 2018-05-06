@@ -5,7 +5,11 @@
  */
 package br.furb.programcaoii.problema2.view;
 
+import br.furb.programcaoii.problema2.classes.Cliente;
 import br.furb.programcaoii.problema2.classes.ContaCorrente;
+import br.furb.programcaoii.problema2.controller.ClienteController;
+import br.furb.programcaoii.problema2.factory.ControllerFactory;
+import br.furb.programcaoii.problema2.util.Util;
 
 /**
  *
@@ -54,6 +58,11 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         jLabel4.setText("Saldo");
 
         btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,41 +112,17 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ContaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ContaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ContaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ContaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        int conta = Util.castInt(txtNumero.getText());
+        int agencia = Util.castInt(txtAgencia.getText());
+        double saldo = Util.castDouble(txtSaldo.getText());
+        Cliente cliente = ControllerFactory.getController(ClienteController.class).buscar((String) cbCliente.getSelectedItem());
+        
+        if (null == contaCorrente) {
+            contaCorrente = new ContaCorrente(conta, agencia);
+            contaCorrente.setCliente(cliente);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ContaView().setVisible(true);
-            }
-        });
-    }
+    }//GEN-LAST:event_btSalvarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSalvar;

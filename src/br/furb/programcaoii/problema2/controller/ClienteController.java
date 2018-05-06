@@ -4,7 +4,6 @@ import br.furb.programcaoii.problema2.classes.Cliente;
 import br.furb.programcaoii.problema2.classes.ClientePessoaFisica;
 import br.furb.programcaoii.problema2.classes.ClientePessoaJuridica;
 import br.furb.programcaoii.problema2.dao.ClienteDAO;
-import br.furb.programcaoii.problema2.dao.DAO;
 import com.sun.xml.internal.fastinfoset.stax.events.Util;
 
 /**

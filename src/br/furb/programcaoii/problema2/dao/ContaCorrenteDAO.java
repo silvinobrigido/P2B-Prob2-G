@@ -1,11 +1,8 @@
 package br.furb.programcaoii.problema2.dao;
 
-import br.furb.programcaoii.problema2.classes.Cliente;
 import br.furb.programcaoii.problema2.classes.ContaCorrente;
 import br.furb.programcaoii.problema2.exception.RegistroNaoEncontradoException;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -27,6 +24,7 @@ public class ContaCorrenteDAO extends DAO<ContaCorrente> {
         throw new RegistroNaoEncontradoException();
     }
     
+    @Override
     public Set<Object> getObjetosPersistidos() {
         return CacheDAO.getObjetosPersistidos(ContaCorrente.class);
     }
