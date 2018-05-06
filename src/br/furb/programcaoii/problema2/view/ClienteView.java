@@ -10,6 +10,10 @@ import br.furb.programcaoii.problema2.classes.ClientePessoaFisica;
 import br.furb.programcaoii.problema2.classes.ClientePessoaJuridica;
 import br.furb.programcaoii.problema2.controller.ClienteController;
 import br.furb.programcaoii.problema2.factory.ControllerFactory;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -18,12 +22,43 @@ import br.furb.programcaoii.problema2.factory.ControllerFactory;
 public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
 
     private Cliente cliente;
-    
+    private MaskFormatter mascaraCNPJ = null;
+    private MaskFormatter mascaraCPF = null;
+    private MaskFormatter mascaraTelefoneFixo = null;
+    private MaskFormatter mascaraTelefoneCelular = null;
+
+    private void habilitarDesabilitarServidorJMS() {
+        txtServidorJMS.setVisible(rbPessoaJuridica.isSelected());
+        lblServidor.setVisible(rbPessoaJuridica.isSelected());
+    }
+
+    private void alterarMascaraCPFCNPJ(String tipoPessoa) {
+        if (tipoPessoa.equalsIgnoreCase("PF")) {
+            mascaraCPF.install(txtCpfCnpj);
+        } else if (tipoPessoa.equalsIgnoreCase("PJ")) {
+            mascaraCNPJ.install(txtCpfCnpj);
+        }
+    }
+
     /**
      * Creates new form ClienteView
      */
     public ClienteView() {
         initComponents();
+        habilitarDesabilitarServidorJMS();
+
+        try {
+            // criando máscaras
+            mascaraCNPJ = new MaskFormatter("##.###.###/####-##");
+            mascaraCPF = new MaskFormatter("###.###.###-##");
+            mascaraTelefoneFixo = new MaskFormatter("+## ####-####");
+            mascaraTelefoneCelular = new MaskFormatter("+## #####-####");
+        } catch (ParseException exc) {
+        }
+
+        mascaraTelefoneFixo.install(txtTelefoneFixo);
+        mascaraTelefoneCelular.install(txtTelefoneCelular);
+
     }
 
     /**
@@ -38,10 +73,7 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
         jLabel1 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtTelefoneFixo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtTelefoneCelular = new javax.swing.JTextField();
-        txtCpfCnpj = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         rbPessoaFisica = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
@@ -49,8 +81,11 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
         btSalvar = new javax.swing.JButton();
         lblServidor = new javax.swing.JLabel();
         txtServidorJMS = new javax.swing.JTextField();
+        txtCpfCnpj = new javax.swing.JFormattedTextField();
+        txtTelefoneFixo = new javax.swing.JFormattedTextField();
+        txtTelefoneCelular = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -63,17 +98,12 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
 
         jLabel2.setText("Telefone fixo");
 
-        txtTelefoneFixo.setName(""); // NOI18N
-
         jLabel3.setText("Telefone celular");
-
-        txtTelefoneCelular.setName(""); // NOI18N
-
-        txtCpfCnpj.setName(""); // NOI18N
 
         jLabel4.setText("CPF/CNPJ");
 
         rbPessoaFisica.setText("Pessoa física");
+        rbPessoaFisica.setRolloverEnabled(false);
         rbPessoaFisica.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 rbPessoaFisicaStateChanged(evt);
@@ -83,6 +113,7 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
         jLabel5.setText("Tipo pessoa");
 
         rbPessoaJuridica.setText("Pessoa jurídica");
+        rbPessoaJuridica.setRolloverEnabled(false);
         rbPessoaJuridica.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 rbPessoaJuridicaStateChanged(evt);
@@ -98,6 +129,8 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
 
         lblServidor.setText("Servidor JMS");
 
+        txtCpfCnpj.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,15 +138,15 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCpfCnpj)
                     .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtNome)
-                    .addComponent(txtTelefoneFixo, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtTelefoneCelular, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtCpfCnpj, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rbPessoaFisica)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addComponent(rbPessoaJuridica))
+                    .addComponent(txtServidorJMS)
+                    .addComponent(txtTelefoneFixo)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -123,7 +156,7 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
                             .addComponent(jLabel5)
                             .addComponent(lblServidor))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtServidorJMS))
+                    .addComponent(txtTelefoneCelular))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -135,17 +168,17 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTelefoneFixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTelefoneFixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTelefoneCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(7, 7, 7)
                 .addComponent(txtCpfCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -169,7 +202,7 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         try {
-            if (null == cliente) {    
+            if (null == cliente) {
                 if (rbPessoaFisica.isSelected()) {
                     ClientePessoaFisica clientePessoaFisica = new ClientePessoaFisica(txtNome.getText(), txtTelefoneCelular.getText(), txtTelefoneFixo.getText(), txtCpfCnpj.getText());
                     cliente = clientePessoaFisica;
@@ -185,24 +218,26 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
         } catch (Exception e) {
             abrirDialogoErro(this, e);
         }
-        
-    }//GEN-LAST:event_btSalvarActionPerformed
 
-    private void rbPessoaJuridicaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbPessoaJuridicaStateChanged
-        txtServidorJMS.setVisible(rbPessoaJuridica.isSelected());
-        lblServidor.setVisible(rbPessoaJuridica.isSelected());
-        if (rbPessoaJuridica.isSelected()) {
-            rbPessoaFisica.setSelected(!rbPessoaJuridica.isSelected());
-            rbPessoaJuridica.setSelected(true);
-        }
-    }//GEN-LAST:event_rbPessoaJuridicaStateChanged
+    }//GEN-LAST:event_btSalvarActionPerformed
 
     private void rbPessoaFisicaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbPessoaFisicaStateChanged
         if (rbPessoaFisica.isSelected()) {
             rbPessoaJuridica.setSelected(!rbPessoaFisica.isSelected());
             rbPessoaFisica.setSelected(true);
         }
+        alterarMascaraCPFCNPJ("PF");
+        habilitarDesabilitarServidorJMS();
     }//GEN-LAST:event_rbPessoaFisicaStateChanged
+
+    private void rbPessoaJuridicaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbPessoaJuridicaStateChanged
+        if (rbPessoaJuridica.isSelected()) {
+            rbPessoaFisica.setSelected(!rbPessoaJuridica.isSelected());
+            rbPessoaJuridica.setSelected(true);
+        }
+        alterarMascaraCPFCNPJ("PJ");
+        habilitarDesabilitarServidorJMS();
+    }//GEN-LAST:event_rbPessoaJuridicaStateChanged
 
     /**
      * @param args the command line arguments
@@ -249,21 +284,21 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
     private javax.swing.JLabel lblServidor;
     private javax.swing.JRadioButton rbPessoaFisica;
     private javax.swing.JRadioButton rbPessoaJuridica;
-    private javax.swing.JTextField txtCpfCnpj;
+    private javax.swing.JFormattedTextField txtCpfCnpj;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtServidorJMS;
-    private javax.swing.JTextField txtTelefoneCelular;
-    private javax.swing.JTextField txtTelefoneFixo;
+    private javax.swing.JFormattedTextField txtTelefoneCelular;
+    private javax.swing.JFormattedTextField txtTelefoneFixo;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void setEntidade(Cliente entidade) {
         this.cliente = entidade;
-        
+
         txtNome.setText(cliente.getNome());
         txtTelefoneCelular.setText(cliente.getTelCelular());
         txtTelefoneFixo.setText(cliente.getTelFixo());
-        
+
         if (cliente instanceof ClientePessoaFisica) {
             ClientePessoaFisica clientePessoaFisica = (ClientePessoaFisica) cliente;
             txtCpfCnpj.setText(clientePessoaFisica.getCpf());
@@ -273,6 +308,6 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
             txtCpfCnpj.setText(clientePessoaJuridica.getCnpj());
             rbPessoaJuridica.setSelected(true);
         }
-        
+
     }
 }
