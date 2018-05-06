@@ -10,6 +10,8 @@ import br.furb.programcaoii.problema2.classes.ContaCorrente;
 import br.furb.programcaoii.problema2.controller.ClienteController;
 import br.furb.programcaoii.problema2.factory.ControllerFactory;
 import br.furb.programcaoii.problema2.util.Util;
+import java.text.ParseException;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -18,12 +20,30 @@ import br.furb.programcaoii.problema2.util.Util;
 public class ContaView extends javax.swing.JFrame implements View<ContaCorrente> {
 
     private ContaCorrente contaCorrente;
+    private MaskFormatter mascaraNumero = null;
+    private MaskFormatter mascaraAgencia = null;
+    private MaskFormatter mascaraSaldo = null;
+    
     
     /**
      * Creates new form ClienteView
      */
     public ContaView() {
         initComponents();
+
+        try {
+            // criando máscaras
+            mascaraNumero = new MaskFormatter("#######-#");
+            mascaraAgencia = new MaskFormatter("####-#");
+            mascaraSaldo = new MaskFormatter("R$");
+
+        } catch (ParseException exc) {
+        }
+
+        mascaraNumero.install(txtNumero);
+        mascaraAgencia.install(txtAgencia);
+        mascaraSaldo.install(txtSaldo);
+        
     }
 
     /**
@@ -38,16 +58,14 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         cbCliente = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNumero = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtAgencia = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtSaldo = new javax.swing.JTextField();
         btSalvar = new javax.swing.JButton();
+        txtNumero = new javax.swing.JFormattedTextField();
+        txtAgencia = new javax.swing.JFormattedTextField();
+        txtSaldo = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        cbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Cliente");
 
@@ -71,10 +89,10 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbCliente, 0, 305, Short.MAX_VALUE)
+                    .addComponent(cbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                     .addComponent(txtNumero)
                     .addComponent(txtAgencia)
-                    .addComponent(txtSaldo)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -82,7 +100,7 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtSaldo))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -94,9 +112,9 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
                 .addComponent(cbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -104,7 +122,7 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(btSalvar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -131,9 +149,9 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtAgencia;
-    private javax.swing.JTextField txtNumero;
-    private javax.swing.JTextField txtSaldo;
+    private javax.swing.JFormattedTextField txtAgencia;
+    private javax.swing.JFormattedTextField txtNumero;
+    private javax.swing.JFormattedTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
 
     @Override
