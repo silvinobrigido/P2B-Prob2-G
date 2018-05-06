@@ -47,6 +47,7 @@ public class ContasView extends javax.swing.JFrame implements View {
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fast_money_business-48.png"))); // NOI18N
         jLabel1.setText("FastMoney");
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -132,7 +133,7 @@ public class ContasView extends javax.swing.JFrame implements View {
                     .addComponent(btAdicionar)
                     .addComponent(btEditar)
                     .addComponent(btExcluir))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

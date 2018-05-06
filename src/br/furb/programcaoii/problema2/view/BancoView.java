@@ -52,6 +52,7 @@ public class BancoView extends javax.swing.JFrame implements View {
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fast_money_business-48.png"))); // NOI18N
         jLabel1.setText("FastMoney");
 
         jButton3.setText("Operações");

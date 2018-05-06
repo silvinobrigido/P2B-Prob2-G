@@ -54,6 +54,7 @@ public class ClientesView extends javax.swing.JFrame implements View<Cliente> {
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fast_money_business-48.png"))); // NOI18N
         jLabel1.setText("FastMoney");
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -129,7 +130,7 @@ public class ClientesView extends javax.swing.JFrame implements View<Cliente> {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 601, Short.MAX_VALUE)
+            .addGap(0, 623, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(13, 13, 13)
@@ -143,7 +144,7 @@ public class ClientesView extends javax.swing.JFrame implements View<Cliente> {
                         .addComponent(btAdicionar)
                         .addComponent(btEditar)
                         .addComponent(btExcluir))
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
