@@ -1,6 +1,5 @@
 package br.furb.programcaoii.problema2.dao;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,8 +13,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -24,18 +21,18 @@ import java.util.logging.Logger;
  */
 public abstract class CacheDAO<O extends Object> implements DAO<O> {
     
-    private static final Map<String, Set<Object>> map = new HashMap<>();
+    private static final Map<String, Set<Object>> MAP = new HashMap<>();
     
     @Override
     public Set<O> getObjetosPersistidos() {
-        carregarCache();
+        //carregarCache();
         
         String nomeClasse = getNomeClasse(getEntityClass());
-        Set<O> objetos = (Set<O>) map.get(nomeClasse);
+        Set<O> objetos = (Set<O>) MAP.get(nomeClasse);
         
         if (null == objetos) {
             objetos = new HashSet<>();
-            map.put(nomeClasse, (Set<Object>) objetos);
+            MAP.put(nomeClasse, (Set<Object>) objetos);
         }
         
         return objetos;
@@ -51,7 +48,7 @@ public abstract class CacheDAO<O extends Object> implements DAO<O> {
         
         objetos.add(obj);
         
-        salvarCache();
+        //salvarCache();
     }
 
     @Override
@@ -60,7 +57,7 @@ public abstract class CacheDAO<O extends Object> implements DAO<O> {
         
         objetos.remove(obj);
         
-        salvarCache();
+        //salvarCache();
     }
     
     private void salvarCache() {
@@ -71,7 +68,7 @@ public abstract class CacheDAO<O extends Object> implements DAO<O> {
             
             ObjectOutputStream oos = new ObjectOutputStream(os);
             oos.reset();
-            oos.writeObject(map);
+            oos.writeObject(MAP);
             oos.flush();
             oos.close();
         } catch (IOException ex) {
@@ -89,7 +86,7 @@ public abstract class CacheDAO<O extends Object> implements DAO<O> {
             Object obj = ois.readObject();
             if (obj instanceof Map) {
                 Map<String, Set<Object>> mapCache = (Map<String, Set<Object>>) obj;
-                mapCache.entrySet().forEach(entry -> CacheDAO.map.put(entry.getKey(), entry.getValue()));
+                mapCache.entrySet().forEach(entry -> CacheDAO.MAP.put(entry.getKey(), entry.getValue()));
             }
             ois.close();
         } catch (IOException | ClassNotFoundException ex) {
