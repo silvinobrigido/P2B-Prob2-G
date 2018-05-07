@@ -27,24 +27,24 @@ public class BancoView extends javax.swing.JFrame implements View {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btClientes = new javax.swing.JButton();
+        btContas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btOperacoes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Clientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btClientes.setText("Clientes");
+        btClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btClientesActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Contas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btContas.setText("Contas");
+        btContas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btContasActionPerformed(evt);
             }
         });
 
@@ -53,10 +53,10 @@ public class BancoView extends javax.swing.JFrame implements View {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fast_money_business-48.png"))); // NOI18N
         jLabel1.setText("FastMoney");
 
-        jButton3.setText("Operações");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btOperacoes.setText("Operações");
+        btOperacoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btOperacoesActionPerformed(evt);
             }
         });
 
@@ -67,10 +67,10 @@ public class BancoView extends javax.swing.JFrame implements View {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btContas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
+                    .addComponent(btOperacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -79,31 +79,31 @@ public class BancoView extends javax.swing.JFrame implements View {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btClientes)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btContas)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(btOperacoes)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClientesActionPerformed
         ClientesView clientesView = ViewFactory.getView(ClientesView.class);
         clientesView.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btClientesActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContasActionPerformed
         ContasView contasView = ViewFactory.getView(ContasView.class);
         contasView.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btContasActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btOperacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOperacoesActionPerformed
        OperacoesView operacoesView = ViewFactory.getView(OperacoesView.class);
        operacoesView.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btOperacoesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,9 +141,9 @@ public class BancoView extends javax.swing.JFrame implements View {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btClientes;
+    private javax.swing.JButton btContas;
+    private javax.swing.JButton btOperacoes;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
