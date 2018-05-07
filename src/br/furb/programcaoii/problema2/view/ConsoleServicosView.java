@@ -16,6 +16,7 @@ public class ConsoleServicosView extends javax.swing.JFrame implements View {
      */
     public ConsoleServicosView() {
         initComponents();
+        this.setTitle("Serviços | FastMoney");
     }
 
     /**

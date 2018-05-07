@@ -32,6 +32,7 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
      */
     public ContaView() {
         initComponents();
+        this.setTitle("Conta | FastMoney");
 
         try {
             // criando máscaras
@@ -192,9 +193,9 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
                     .addComponent(jLabel7)
                     .addComponent(jCheckBox7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jCheckBox8))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox8)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)

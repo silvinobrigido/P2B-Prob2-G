@@ -23,6 +23,7 @@ public class ContasView extends javax.swing.JFrame implements View {
      */
     public ContasView() {
         initComponents();
+        this.setTitle("Contas | FastMoney");
     }
 
     /**
