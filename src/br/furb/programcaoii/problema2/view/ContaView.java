@@ -162,10 +162,13 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
     @Override
     public void setEntidade(ContaCorrente entidade) {
         this.contaCorrente = entidade;
-
+        
         cbCliente.setSelectedItem(contaCorrente.getCliente().getNome());
         txtAgencia.setText(String.valueOf(contaCorrente.getAgencia()));
         txtNumero.setText(String.valueOf(contaCorrente.getNumero()));
+        
+        txtAgencia.setEditable(false);
+        txtNumero.setEditable(false);
     }
 
     private void atualizarClientes() {

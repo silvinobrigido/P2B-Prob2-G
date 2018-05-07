@@ -20,18 +20,18 @@ import javax.swing.text.MaskFormatter;
  * @author ariel
  */
 public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
-    
+
     private Cliente cliente;
     private MaskFormatter mascaraCNPJ = null;
     private MaskFormatter mascaraCPF = null;
     private MaskFormatter mascaraTelefoneFixo = null;
     private MaskFormatter mascaraTelefoneCelular = null;
-    
+
     private void habilitarDesabilitarServidorJMS() {
         txtServidorJMS.setVisible(rbPessoaJuridica.isSelected());
         lblServidor.setVisible(rbPessoaJuridica.isSelected());
     }
-    
+
     private void alterarMascaraCPFCNPJ(String tipoPessoa) {
         if (tipoPessoa.equalsIgnoreCase("PF")) {
             mascaraCPF.install(txtCpfCnpj);
@@ -46,8 +46,7 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
     public ClienteView() {
         initComponents();
         habilitarDesabilitarServidorJMS();
-        
-        
+
         try {
             // criando máscaras
             mascaraCNPJ = new MaskFormatter("##.###.###/####-##");
@@ -56,11 +55,11 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
             mascaraTelefoneCelular = new MaskFormatter("(##) #####-####");
         } catch (ParseException exc) {
         }
-        
+
         rbPessoaFisica.setSelected(true);
         mascaraTelefoneFixo.install(txtTelefoneFixo);
         mascaraTelefoneCelular.install(txtTelefoneCelular);
-        
+
     }
 
     /**
@@ -132,6 +131,7 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
         lblServidor.setText("Servidor JMS");
 
         txtCpfCnpj.setToolTipText("");
+        txtCpfCnpj.setName("txtCpfCnpj"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,7 +190,7 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
                 .addComponent(lblServidor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtServidorJMS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(btSalvar)
                 .addContainerGap())
         );
@@ -224,7 +224,7 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
                     ((ClientePessoaJuridica) cliente).setCnpj(txtCpfCnpj.getText());
                 }
             }
-            
+
             ControllerFactory.getController(ClienteController.class).salvar(cliente);
             this.setVisible(false);
         } catch (Exception e) {
@@ -271,23 +271,24 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
     @Override
     public void setEntidade(Cliente entidade) {
         this.cliente = entidade;
-        
+
         txtNome.setText(cliente.getNome());
         txtTelefoneCelular.setText(cliente.getTelCelular());
         txtTelefoneFixo.setText(cliente.getTelFixo());
-        
-        if (cliente instanceof ClientePessoaFisica) {
-            ClientePessoaFisica clientePessoaFisica = (ClientePessoaFisica) cliente;
-            txtCpfCnpj.setText(clientePessoaFisica.getCpf());
-            rbPessoaFisica.setSelected(true);
-        } else if (cliente instanceof ClientePessoaJuridica) {
-            ClientePessoaJuridica clientePessoaJuridica = (ClientePessoaJuridica) cliente;
-            txtCpfCnpj.setText(clientePessoaJuridica.getCnpj());
-            rbPessoaJuridica.setSelected(true);
-        }
-        
+
         rbPessoaJuridica.setEnabled(false);
         rbPessoaFisica.setEnabled(false);
-        
+
+        if (cliente instanceof ClientePessoaFisica) {
+            ClientePessoaFisica clientePessoaFisica = (ClientePessoaFisica) cliente;
+            rbPessoaFisica.setSelected(true);
+            txtCpfCnpj.setText(clientePessoaFisica.getCpf());
+        } else if (cliente instanceof ClientePessoaJuridica) {
+            ClientePessoaJuridica clientePessoaJuridica = (ClientePessoaJuridica) cliente;
+            rbPessoaJuridica.setSelected(true);
+            txtCpfCnpj.setText(clientePessoaJuridica.getCnpj());
+            txtServidorJMS.setText(clientePessoaJuridica.getServidorJMS());
+        }
+
     }
 }
