@@ -54,6 +54,11 @@ public class BancoView extends javax.swing.JFrame implements View {
         jLabel1.setText("FastMoney");
 
         jButton3.setText("Operações");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,6 +99,11 @@ public class BancoView extends javax.swing.JFrame implements View {
         ContasView contasView = ViewFactory.getView(ContasView.class);
         contasView.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        OperacoesView operacoesView = ViewFactory.getView(OperacoesView.class);
+        operacoesView.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

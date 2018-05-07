@@ -1,10 +1,15 @@
 package br.furb.programcaoii.problema2.util;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 /**
  *
  * @author ariel
  */
 public class Util {
+    
+    private static final DateFormat df = DateFormat.getDateInstance();
     
     public static Integer castInt(String numero) {
         try {
@@ -20,6 +25,10 @@ public class Util {
         } catch (Exception e) {
             return null;
         }
+    }
+    
+    public static String castDateToString(Date date) {
+        return df.format(date);
     }
     
 }

@@ -3,6 +3,8 @@ package br.furb.programcaoii.problema2.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Observable;
@@ -103,5 +105,9 @@ public class ContaCorrente extends Observable implements Serializable {
         
         setChanged();
         notifyObservers(operacao);
+    }
+    
+    public List<Operacao> getOperacoes() {
+        return new ArrayList<>(operacoes);
     }
 }
