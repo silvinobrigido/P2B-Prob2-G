@@ -23,6 +23,7 @@ public class OperacoesView extends javax.swing.JFrame implements View<Cliente> {
      */
     public OperacoesView() {
         initComponents();
+        this.setTitle("Operações | FastMoney");
     }
 
     /**

@@ -25,6 +25,7 @@ public class ClientesView extends javax.swing.JFrame implements View<Cliente> {
      */
     public ClientesView() {
         initComponents();
+        this.setTitle("Clientes | FastMoney");
     }
 
     /**

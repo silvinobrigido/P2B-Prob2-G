@@ -38,6 +38,7 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
      */
     public ClienteView() {
         initComponents();
+        this.setTitle("Cliente | FastMoney");
         habilitarDesabilitarServidorJMS();
 
         try {
