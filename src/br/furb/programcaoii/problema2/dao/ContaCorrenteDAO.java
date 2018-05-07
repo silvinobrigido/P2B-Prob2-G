@@ -15,7 +15,7 @@ public class ContaCorrenteDAO extends CacheDAO<ContaCorrente> {
         Set<ContaCorrente> contas = getObjetosPersistidos();
         for (ContaCorrente contaCorrente : contas) {
             
-            if (String.valueOf(contaCorrente.getNumero()).contains(campo)) {
+            if (contaCorrente.getChave().contains(campo)) {
                 return contaCorrente;
             }
         }

@@ -281,6 +281,7 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         
         txtAgencia.setEditable(false);
         txtNumero.setEditable(false);
+        cbCliente.setEditable(false);
     }
 
     private void atualizarClientes() {

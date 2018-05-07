@@ -182,9 +182,11 @@ public class ContasView extends javax.swing.JFrame implements View {
     private ContaCorrente getContaCorrenteSelecionada() {
         int linha = jTable1.getSelectedRow();
         if (0 <= linha) {
-            String valor = (String) jTable1.getValueAt(linha, 0);
+            String nomeCliente = (String) jTable1.getValueAt(linha, 0);
+            Integer numero = (Integer) jTable1.getValueAt(linha, 1);
+            Integer agencia = (Integer) jTable1.getValueAt(linha, 2);
             
-            return ControllerFactory.getController(ContaCorrenteController.class).buscar(valor);
+            return ControllerFactory.getController(ContaCorrenteController.class).getContaCorrente(nomeCliente, numero, agencia);
         }
         return null;
     }

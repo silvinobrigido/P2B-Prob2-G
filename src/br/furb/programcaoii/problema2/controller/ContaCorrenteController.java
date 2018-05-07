@@ -2,6 +2,7 @@ package br.furb.programcaoii.problema2.controller;
 
 import br.furb.programcaoii.problema2.model.ContaCorrente;
 import br.furb.programcaoii.problema2.dao.ContaCorrenteDAO;
+import br.furb.programcaoii.problema2.factory.ControllerFactory;
 import br.furb.programcaoii.problema2.model.Cliente;
 import br.furb.programcaoii.problema2.model.servicos.AnaliseFluxoCaixa;
 import br.furb.programcaoii.problema2.model.servicos.AnaliseInvestimento;
@@ -162,8 +163,23 @@ public class ContaCorrenteController extends Controller<ContaCorrente, ContaCorr
         }
     }
 
-    void excluirContasCorrentePorCliente(Cliente obj) {
+    public void excluirContasCorrentePorCliente(Cliente obj) {
         Set<ContaCorrente> contasCorrente = getObjetosPersistidos();
         contasCorrente.stream().filter(cc -> obj.equals(cc.getCliente())).forEach(cc -> excluir(cc));
+    }
+    
+    public ContaCorrente getContaCorrente(String nomeCliente, Integer numero, Integer agencia) {
+        Cliente cliente = ControllerFactory.getController(ClienteController.class).buscar(nomeCliente);
+        
+        if (null != cliente) {
+            Set<ContaCorrente> contasCorrente = getObjetosPersistidos();
+            for (ContaCorrente contaCorrente : contasCorrente) {
+                if (contaCorrente.getCliente().equals(cliente) && numero.equals(contaCorrente.getNumero()) && agencia.equals(contaCorrente.getAgencia())) {
+                    return contaCorrente;
+                }
+            }
+        }
+            
+        return null;
     }
 }
