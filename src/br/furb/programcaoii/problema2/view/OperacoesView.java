@@ -62,6 +62,9 @@ public class OperacoesView extends javax.swing.JFrame implements View<Cliente> {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
@@ -300,8 +303,8 @@ public class OperacoesView extends javax.swing.JFrame implements View<Cliente> {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        atualizarContasCorrente();
-        atualizarConsulta();
+//        atualizarContasCorrente();
+//        atualizarConsulta();
     }//GEN-LAST:event_formWindowActivated
 
     private void cbContasCorrenteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbContasCorrenteItemStateChanged
@@ -309,26 +312,43 @@ public class OperacoesView extends javax.swing.JFrame implements View<Cliente> {
     }//GEN-LAST:event_cbContasCorrenteItemStateChanged
 
     private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
-        ContaCorrente contaCorrente = getContaCorrenteSelecionada();
-        ControllerFactory.getController(ContaCorrenteController.class).sacar(contaCorrente, txtValorSaque.getText());
-        
-        atualizarConsulta();
+        try {
+            ContaCorrente contaCorrente = getContaCorrenteSelecionada();
+            ControllerFactory.getController(ContaCorrenteController.class).sacar(contaCorrente, txtValorSaque.getText());
+
+            atualizarConsulta();
+        } catch (Exception e) {
+            abrirDialogoErro(this, e);
+        }
     }//GEN-LAST:event_btSacarActionPerformed
 
     private void btDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositarActionPerformed
-        ContaCorrente contaCorrente = getContaCorrenteSelecionada();
-        ControllerFactory.getController(ContaCorrenteController.class).depositar(contaCorrente, txtValorDeposito.getText());
-        
-        atualizarConsulta();
+        try {
+            ContaCorrente contaCorrente = getContaCorrenteSelecionada();
+            ControllerFactory.getController(ContaCorrenteController.class).depositar(contaCorrente, txtValorDeposito.getText());
+
+            atualizarConsulta();
+        } catch (Exception e) {
+            abrirDialogoErro(this, e);
+        }
     }//GEN-LAST:event_btDepositarActionPerformed
 
     private void btTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTransferenciaActionPerformed
-        ContaCorrente contaCorrente = getContaCorrenteSelecionada();
-        ContaCorrente contaCorrenteTransferencia = getContaCorrenteTransferenciaSelecionada();
-        ControllerFactory.getController(ContaCorrenteController.class).transferir(contaCorrente, contaCorrenteTransferencia, txtValorTransferencia.getText());
-        
-        atualizarConsulta();
+        try {
+            ContaCorrente contaCorrente = getContaCorrenteSelecionada();
+            ContaCorrente contaCorrenteTransferencia = getContaCorrenteTransferenciaSelecionada();
+            ControllerFactory.getController(ContaCorrenteController.class).transferir(contaCorrente, contaCorrenteTransferencia, txtValorTransferencia.getText());
+
+            atualizarConsulta();
+        } catch (Exception e) {
+            abrirDialogoErro(this, e);
+        }
     }//GEN-LAST:event_btTransferenciaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        atualizarContasCorrente();
+        atualizarConsulta();
+    }//GEN-LAST:event_formWindowOpened
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btDepositar;
@@ -367,12 +387,18 @@ public class OperacoesView extends javax.swing.JFrame implements View<Cliente> {
 
     private void atualizarConsulta() {
         ContaCorrente contaCorrente = getContaCorrenteSelecionada();
-        txtSaldo.setText("R$ ".concat(String.valueOf(contaCorrente.getSaldo()).replaceAll("[.]", ",")));
-
+   
         DefaultTableModel model = (DefaultTableModel) tableConsulta.getModel();   
         while (model.getRowCount() > 0){
             model.removeRow(0);
         }
+        
+        if (null == contaCorrente) {
+            txtSaldo.setText("-");
+            return;
+        }
+        
+        txtSaldo.setText("R$ ".concat(String.valueOf(contaCorrente.getSaldo()).replaceAll("[.]", ",")));
         
         for (Operacao operacao : contaCorrente.getOperacoes()) {
             String data = Util.castDateToString(operacao.getDataHora());

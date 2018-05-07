@@ -198,28 +198,14 @@ public class ClienteView extends javax.swing.JFrame implements View<Cliente> {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         try {
-            if (null == cliente) {
-                if (rbPessoaFisica.isSelected()) {
-                    ClientePessoaFisica clientePessoaFisica = new ClientePessoaFisica(txtNome.getText(), txtTelefoneCelular.getText(), txtTelefoneFixo.getText(), txtCpfCnpj.getText());
-                    cliente = clientePessoaFisica;
-                } else if (rbPessoaJuridica.isSelected()) {
-                    ClientePessoaJuridica clientePessoaJuridica = new ClientePessoaJuridica(txtNome.getText(), txtTelefoneCelular.getText(), txtTelefoneFixo.getText(), txtCpfCnpj.getText(), txtServidorJMS.getText());
-                    cliente = clientePessoaJuridica;
-                } else {
-                    throw new RuntimeException("Selecione o tipo de pessoa");
-                }
-            } else {
-                cliente.setNome(txtNome.getText());
-                cliente.setTelCelular(txtTelefoneCelular.getText());
-                cliente.setTelFixo(txtTelefoneFixo.getText());
-                if (cliente instanceof ClientePessoaFisica) {
-                    ((ClientePessoaFisica) cliente).setCpf(txtCpfCnpj.getText());
-                } else {
-                    ((ClientePessoaJuridica) cliente).setCnpj(txtCpfCnpj.getText());
-                }
-            }
-
-            ControllerFactory.getController(ClienteController.class).salvar(cliente);
+            ControllerFactory.getController(ClienteController.class).salvar(cliente, //
+                    txtNome.getText(), //
+                    txtTelefoneCelular.getText(), //
+                    txtTelefoneFixo.getText(), //
+                    txtCpfCnpj.getText(), //
+                    txtServidorJMS.getText(), //
+                    rbPessoaFisica.isSelected(), //
+                    rbPessoaJuridica.isSelected());
             this.setVisible(false);
         } catch (Exception e) {
             abrirDialogoErro(this, e);

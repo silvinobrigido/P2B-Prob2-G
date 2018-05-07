@@ -60,22 +60,22 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btSalvar = new javax.swing.JButton();
         txtNumero = new javax.swing.JFormattedTextField();
         txtAgencia = new javax.swing.JFormattedTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        cbNotificacaoWhatsapp = new javax.swing.JCheckBox();
+        cbNotificacaoSms = new javax.swing.JCheckBox();
+        cbNotificacaoJms = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jCheckBox9 = new javax.swing.JCheckBox();
+        cbAnaliseInvestimento = new javax.swing.JCheckBox();
+        cbAnaliseFluxoCaixa = new javax.swing.JCheckBox();
+        cbOfertaFinanciamento = new javax.swing.JCheckBox();
+        cbBaixaAutomaticaInvestimento = new javax.swing.JCheckBox();
+        btSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -90,18 +90,12 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
 
         jLabel3.setText("Agência");
 
-        btSalvar.setText("Salvar");
-        btSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSalvarActionPerformed(evt);
-            }
-        });
+        cbNotificacaoWhatsapp.setText("WhatsApp");
 
-        jCheckBox1.setText("WhatsApp");
+        cbNotificacaoSms.setText("SMS");
 
-        jCheckBox2.setText("SMS");
-
-        jCheckBox3.setText(" JMS (Java Message Service).");
+        cbNotificacaoJms.setText(" JMS (Java Message Service)");
+        cbNotificacaoJms.setActionCommand(" JMS (Java Message Service)");
 
         jLabel4.setText("Serviços de Notificação:");
 
@@ -113,13 +107,20 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
 
         jLabel9.setText("Análise de Investimento:");
 
-        jCheckBox6.setText("Sim");
+        cbAnaliseInvestimento.setText("Sim");
 
-        jCheckBox7.setText("Sim");
+        cbAnaliseFluxoCaixa.setText("Sim");
 
-        jCheckBox8.setText("Sim");
+        cbOfertaFinanciamento.setText("Sim");
 
-        jCheckBox9.setText("Sim");
+        cbBaixaAutomaticaInvestimento.setText("Sim");
+
+        btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,37 +129,39 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtNumero)
                     .addComponent(txtAgencia)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbAnaliseFluxoCaixa))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbAnaliseInvestimento))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbBaixaAutomaticaInvestimento, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbOfertaFinanciamento, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jCheckBox1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCheckBox2)
-                                .addGap(10, 10, 10)
-                                .addComponent(jCheckBox3))
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(51, 51, 51)
-                                .addComponent(jCheckBox6))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox9)
-                                    .addComponent(jCheckBox8)
-                                    .addComponent(jCheckBox7))))
+                                .addComponent(cbNotificacaoWhatsapp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbNotificacaoSms)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbNotificacaoJms)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -179,71 +182,72 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
                 .addComponent(txtAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbNotificacaoWhatsapp)
+                    .addComponent(cbNotificacaoSms)
+                    .addComponent(cbNotificacaoJms))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jCheckBox6))
+                    .addComponent(cbAnaliseFluxoCaixa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jCheckBox7))
+                    .addComponent(cbBaixaAutomaticaInvestimento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox8)
-                    .addComponent(jLabel8))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cbOfertaFinanciamento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jCheckBox9))
+                    .addComponent(cbAnaliseInvestimento))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btSalvar)
-                .addContainerGap())
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jLabel5))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        atualizarClientes();
+    }//GEN-LAST:event_formWindowActivated
+
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         try {
-            Integer conta = Util.castInt(txtNumero.getText().replaceAll("[,.-]", ""));
-            Integer agencia = Util.castInt(txtAgencia.getText().replaceAll("[,.-]", ""));
-            Cliente cliente = ControllerFactory.getController(ClienteController.class).buscar((String) cbCliente.getSelectedItem());
+            Cliente cliente = (Cliente) cbCliente.getSelectedItem();
 
-            if (null == contaCorrente) {
-                contaCorrente = new ContaCorrente(conta, agencia);
-                contaCorrente.setCliente(cliente);
-            }
-            contaCorrente.setAgencia(agencia);
-            contaCorrente.setNumero(conta);
-
-            ControllerFactory.getController(ContaCorrenteController.class).salvar(contaCorrente);
+            ControllerFactory.getController(ContaCorrenteController.class).salvar(contaCorrente, //
+                    cliente, //
+                    txtNumero.getText(), //
+                    txtAgencia.getText(), //
+                    cbNotificacaoWhatsapp.isSelected(), //
+                    cbNotificacaoSms.isSelected(), //
+                    cbNotificacaoJms.isSelected(), //
+                    cbAnaliseFluxoCaixa.isSelected(), //
+                    cbAnaliseInvestimento.isSelected(), //
+                    cbBaixaAutomaticaInvestimento.isSelected(), //
+                    cbOfertaFinanciamento.isSelected());
+            
             this.setVisible(false);
         } catch (Exception e) {
             abrirDialogoErro(this, e);
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        atualizarClientes();
-    }//GEN-LAST:event_formWindowActivated
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSalvar;
-    private javax.swing.JComboBox<String> cbCliente;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
+    private javax.swing.JCheckBox cbAnaliseFluxoCaixa;
+    private javax.swing.JCheckBox cbAnaliseInvestimento;
+    private javax.swing.JCheckBox cbBaixaAutomaticaInvestimento;
+    private javax.swing.JComboBox<Cliente> cbCliente;
+    private javax.swing.JCheckBox cbNotificacaoJms;
+    private javax.swing.JCheckBox cbNotificacaoSms;
+    private javax.swing.JCheckBox cbNotificacaoWhatsapp;
+    private javax.swing.JCheckBox cbOfertaFinanciamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -273,6 +277,6 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         cbCliente.removeAllItems();
         
         Set<Cliente> clientes = ControllerFactory.getController(ClienteController.class).getObjetosPersistidos();
-        clientes.stream().map(obj -> (Cliente) obj).filter(cliente -> null != cliente.getNome() && !cliente.getNome().isEmpty()).forEach(cliente -> cbCliente.addItem(cliente.getNome()));
+        clientes.stream().map(obj -> (Cliente) obj).filter(cliente -> null != cliente.getNome() && !cliente.getNome().isEmpty()).forEach(cliente -> cbCliente.addItem(cliente));
     }
 }

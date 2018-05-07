@@ -38,4 +38,44 @@ public class ClienteController extends Controller<Cliente, ClienteDAO> {
             }
         }
     }
+
+    public void salvar(Cliente cliente, String nome, String telefoneCelular, String telefoneFixo, String cpfCnpj, String servidorJms, boolean pessoaFisica, boolean pessoaJuridica) {
+        validarTipoPessoa(pessoaFisica, pessoaJuridica);
+        
+        if (null == cliente) {
+            cliente = instanciarCliente(pessoaFisica, pessoaJuridica);
+        }
+        
+        popularCliente(cliente, nome, telefoneCelular, telefoneFixo, cpfCnpj, servidorJms);
+        
+        salvar(cliente);
+    }
+
+    private void popularCliente(Cliente cliente, String nome, String telefoneCelular, String telefoneFixo, String cpfCnpj, String servidorJms) {
+        cliente.setNome(nome);
+        cliente.setTelCelular(telefoneCelular);
+        cliente.setTelFixo(telefoneFixo);
+        
+        if (cliente instanceof ClientePessoaFisica) {
+            ((ClientePessoaFisica) cliente).setCpf(cpfCnpj);
+        } else {
+            ((ClientePessoaJuridica) cliente).setCnpj(cpfCnpj);
+            ((ClientePessoaJuridica) cliente).setServidorJMS(servidorJms);
+        }
+    }
+
+    private void validarTipoPessoa(boolean pessoaFisica, boolean pessoaJuridica) {
+        if (!pessoaFisica && !pessoaJuridica) {
+            throw new IllegalArgumentException("Selecione um tipo de pessoa!");
+        }
+    }
+
+    private Cliente instanciarCliente(boolean pessoaFisica, boolean pessoaJuridica) {
+        if (pessoaFisica) {
+            return new ClientePessoaFisica(null, null, null, null);
+        } else if (pessoaJuridica) {
+            return new ClientePessoaJuridica(null, null, null, null, null);
+        }
+        return null;
+    }
 }

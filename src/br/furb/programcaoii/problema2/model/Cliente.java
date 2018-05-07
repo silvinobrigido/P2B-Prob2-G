@@ -63,6 +63,9 @@ public abstract class Cliente implements Serializable {
         this.telFixo = telFixo;
     }
     
-    
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
     
 }
