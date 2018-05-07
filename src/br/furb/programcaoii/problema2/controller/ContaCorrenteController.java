@@ -10,6 +10,7 @@ import br.furb.programcaoii.problema2.model.servicos.Notificacao;
 import br.furb.programcaoii.problema2.model.servicos.OfertaFinanciamento;
 import br.furb.programcaoii.problema2.model.servicos.TipoNotificacao;
 import br.furb.programcaoii.problema2.util.Util;
+import java.util.Set;
 
 /**
  *
@@ -159,5 +160,10 @@ public class ContaCorrenteController extends Controller<ContaCorrente, ContaCorr
         if (ofertaFinanciamento) {
             contaCorrente.addObserver(new OfertaFinanciamento());
         }
+    }
+
+    void excluirContasCorrentePorCliente(Cliente obj) {
+        Set<ContaCorrente> contasCorrente = getObjetosPersistidos();
+        contasCorrente.stream().filter(cc -> obj.equals(cc.getCliente())).forEach(cc -> excluir(cc));
     }
 }

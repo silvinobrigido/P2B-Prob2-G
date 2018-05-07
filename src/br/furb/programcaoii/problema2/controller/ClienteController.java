@@ -4,6 +4,7 @@ import br.furb.programcaoii.problema2.model.Cliente;
 import br.furb.programcaoii.problema2.model.ClientePessoaFisica;
 import br.furb.programcaoii.problema2.model.ClientePessoaJuridica;
 import br.furb.programcaoii.problema2.dao.ClienteDAO;
+import br.furb.programcaoii.problema2.factory.ControllerFactory;
 import com.sun.xml.internal.fastinfoset.stax.events.Util;
 
 /**
@@ -21,6 +22,12 @@ public class ClienteController extends Controller<Cliente, ClienteDAO> {
         validarPessoa(obj);
         
         super.salvar(obj);
+    }
+    
+    @Override
+    public void excluir(Cliente obj) {
+        ControllerFactory.getController(ContaCorrenteController.class).excluirContasCorrentePorCliente(obj);
+        super.excluir(obj);
     }
 
     private void validarPessoa(Cliente obj) {

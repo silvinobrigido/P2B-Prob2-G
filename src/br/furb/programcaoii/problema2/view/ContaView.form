@@ -134,6 +134,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbClienteItemStateChanged"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Cliente&gt;"/>
       </AuxValues>
@@ -170,7 +173,6 @@
     <Component class="javax.swing.JCheckBox" name="cbNotificacaoJms">
       <Properties>
         <Property name="text" type="java.lang.String" value=" JMS (Java Message Service)"/>
-        <Property name="actionCommand" type="java.lang.String" value=" JMS (Java Message Service)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">

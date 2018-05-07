@@ -10,7 +10,7 @@ import br.furb.programcaoii.problema2.model.ContaCorrente;
 import br.furb.programcaoii.problema2.controller.ClienteController;
 import br.furb.programcaoii.problema2.controller.ContaCorrenteController;
 import br.furb.programcaoii.problema2.factory.ControllerFactory;
-import br.furb.programcaoii.problema2.util.Util;
+import br.furb.programcaoii.problema2.model.ClientePessoaFisica;
 import java.text.ParseException;
 import java.util.Set;
 import javax.swing.text.MaskFormatter;
@@ -84,6 +84,12 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
             }
         });
 
+        cbCliente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbClienteItemStateChanged(evt);
+            }
+        });
+
         jLabel1.setText("Cliente");
 
         jLabel2.setText("Número");
@@ -95,7 +101,6 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         cbNotificacaoSms.setText("SMS");
 
         cbNotificacaoJms.setText(" JMS (Java Message Service)");
-        cbNotificacaoJms.setActionCommand(" JMS (Java Message Service)");
 
         jLabel4.setText("Serviços de Notificação:");
 
@@ -214,6 +219,7 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         atualizarClientes();
+        atualizarJms();
     }//GEN-LAST:event_formWindowActivated
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
@@ -237,6 +243,10 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
             abrirDialogoErro(this, e);
         }
     }//GEN-LAST:event_btSalvarActionPerformed
+
+    private void cbClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbClienteItemStateChanged
+        atualizarJms();
+    }//GEN-LAST:event_cbClienteItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSalvar;
@@ -278,5 +288,15 @@ public class ContaView extends javax.swing.JFrame implements View<ContaCorrente>
         
         Set<Cliente> clientes = ControllerFactory.getController(ClienteController.class).getObjetosPersistidos();
         clientes.stream().map(obj -> (Cliente) obj).filter(cliente -> null != cliente.getNome() && !cliente.getNome().isEmpty()).forEach(cliente -> cbCliente.addItem(cliente));
+    }
+    
+    private void atualizarJms() {
+        Cliente cliente = (Cliente) cbCliente.getSelectedItem();
+        if (null == cliente || cliente instanceof ClientePessoaFisica) {
+            cbNotificacaoJms.setVisible(false);
+            cbNotificacaoJms.setSelected(false);
+        } else {
+            cbNotificacaoJms.setVisible(true);
+        }
     }
 }
