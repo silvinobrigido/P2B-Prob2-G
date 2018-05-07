@@ -1,4 +1,4 @@
-package br.furb.programcaoii.problema2.classes.servicos;
+package br.furb.programcaoii.problema2.model.servicos;
 
 /**
  *

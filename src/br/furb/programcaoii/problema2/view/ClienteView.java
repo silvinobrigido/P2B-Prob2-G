@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.furb.programcaoii.problema2.view;
 
-import br.furb.programcaoii.problema2.classes.Cliente;
-import br.furb.programcaoii.problema2.classes.ClientePessoaFisica;
-import br.furb.programcaoii.problema2.classes.ClientePessoaJuridica;
+import br.furb.programcaoii.problema2.model.Cliente;
+import br.furb.programcaoii.problema2.model.ClientePessoaFisica;
+import br.furb.programcaoii.problema2.model.ClientePessoaJuridica;
 import br.furb.programcaoii.problema2.controller.ClienteController;
 import br.furb.programcaoii.problema2.factory.ControllerFactory;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.text.MaskFormatter;
 
 /**

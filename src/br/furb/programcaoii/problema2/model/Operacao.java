@@ -1,4 +1,4 @@
-package br.furb.programcaoii.problema2.classes;
+package br.furb.programcaoii.problema2.model;
 
 import java.io.Serializable;
 import java.text.DateFormat;

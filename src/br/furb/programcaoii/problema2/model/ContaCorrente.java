@@ -1,4 +1,4 @@
-package br.furb.programcaoii.problema2.classes;
+package br.furb.programcaoii.problema2.model;
 
 
 import java.io.Serializable;
@@ -100,8 +100,8 @@ public class ContaCorrente extends Observable implements Serializable {
     
     protected void adicionarOperacao(Operacao operacao) {
         operacoes.add(operacao);
-        setChanged();
         
+        setChanged();
         notifyObservers(operacao);
     }
 }

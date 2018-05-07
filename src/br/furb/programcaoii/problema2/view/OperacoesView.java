@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.furb.programcaoii.problema2.view;
 
-import br.furb.programcaoii.problema2.model.ContaCorrente;
-import br.furb.programcaoii.problema2.controller.ContaCorrenteController;
+import br.furb.programcaoii.problema2.model.Cliente;
+import br.furb.programcaoii.problema2.model.ClientePessoaFisica;
+import br.furb.programcaoii.problema2.model.ClientePessoaJuridica;
+import br.furb.programcaoii.problema2.controller.ClienteController;
 import br.furb.programcaoii.problema2.factory.ControllerFactory;
 import br.furb.programcaoii.problema2.factory.ViewFactory;
 import java.util.Set;
@@ -16,12 +13,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ariel
  */
-public class ContasView extends javax.swing.JFrame implements View {
+public class OperacoesView extends javax.swing.JFrame implements View<Cliente> {
 
     /**
-     * Creates new form ContasView
+     * Creates new form ClientesView
      */
-    public ContasView() {
+    public OperacoesView() {
         initComponents();
     }
 
@@ -56,21 +53,21 @@ public class ContasView extends javax.swing.JFrame implements View {
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Contas");
+        jLabel2.setText("Operações");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+                {null, null, null, null, null}
             },
             new String [] {
-                "Cliente", "Número", "Agência", "Saldo"
+                "Nome", "Tipo", "Fone fixo", "Fone celular", "CPF/CNPJ"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -108,61 +105,65 @@ public class ContasView extends javax.swing.JFrame implements View {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btAdicionar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btEditar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btExcluir)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addGap(0, 801, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btAdicionar)
+                            .addGap(18, 18, 18)
+                            .addComponent(btEditar)
+                            .addGap(18, 18, 18)
+                            .addComponent(btExcluir)
+                            .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btAdicionar)
-                    .addComponent(btEditar)
-                    .addComponent(btExcluir))
-                .addContainerGap())
+            .addGap(0, 627, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(13, 13, 13)
+                    .addComponent(jLabel1)
+                    .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btAdicionar)
+                        .addComponent(btEditar)
+                        .addComponent(btExcluir))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        ContaCorrente contaCorrente = getContaCorrenteSelecionada();
-        ControllerFactory.getController(ContaCorrenteController.class).excluir(contaCorrente);
-        
-        atualizarTabela();
-    }//GEN-LAST:event_btExcluirActionPerformed
+    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
+        ClienteView clienteView = ViewFactory.getView(ClienteView.class, false);
+        clienteView.setVisible(true);
+    }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        ContaView contaView = ViewFactory.getView(ContaView.class, false);
-        ContaCorrente contaCorrente = getContaCorrenteSelecionada();
-        if (null != contaCorrente) {
-            contaView.setEntidade(contaCorrente);
-            contaView.setVisible(true);
+        ClienteView clienteView = ViewFactory.getView(ClienteView.class, false);
+        Cliente cliente = getClienteSelecionado();
+        if (null != cliente) {
+            clienteView.setEntidade(cliente);
+            clienteView.setVisible(true);
         }
     }//GEN-LAST:event_btEditarActionPerformed
 
-    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
-        ContaView contaView = ViewFactory.getView(ContaView.class, false);
-        contaView.setVisible(true);
-    }//GEN-LAST:event_btAdicionarActionPerformed
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        Cliente cliente = getClienteSelecionado();
+        ControllerFactory.getController(ClienteController.class).excluir(cliente);
+
+        atualizarTabela();
+    }//GEN-LAST:event_btExcluirActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         atualizarTabela();
@@ -178,38 +179,37 @@ public class ContasView extends javax.swing.JFrame implements View {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
-    private ContaCorrente getContaCorrenteSelecionada() {
+    private Cliente getClienteSelecionado() {
         int linha = jTable1.getSelectedRow();
         if (0 <= linha) {
             String valor = (String) jTable1.getValueAt(linha, 0);
-            
-            return ControllerFactory.getController(ContaCorrenteController.class).buscar(valor);
+
+            return ControllerFactory.getController(ClienteController.class).buscar(valor);
         }
         return null;
     }
 
     @Override
-    public void setEntidade(Object entidade) {
-        
+    public void setVisible(boolean b) {
+        super.setVisible(b);
+
+        atualizarTabela();
     }
-    
+
     private void atualizarTabela() {
-        Set<ContaCorrente> contas = ControllerFactory.getController(ContaCorrenteController.class).getObjetosPersistidos();
-        
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        Set<Cliente> clientes = ControllerFactory.getController(ClienteController.class).getObjetosPersistidos();
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();   
         while (model.getRowCount() > 0){
             model.removeRow(0);
         }
-        
-        for (ContaCorrente contaCorrente : contas) {
-            model.addRow(new Object[] {contaCorrente.getCliente().getNome() , contaCorrente.getNumero(), contaCorrente.getAgencia(), contaCorrente.getSaldo()});
+        for (Cliente cliente : clientes) {
+            String cpfCnpj = (cliente instanceof ClientePessoaFisica) ? ((ClientePessoaFisica) cliente).getCpf() : ((ClientePessoaJuridica) cliente).getCnpj();
+            model.addRow(new Object[]{cliente.getNome(), cliente instanceof ClientePessoaFisica ? "P.F." : "P.J.", cliente.getTelFixo(), cliente.getTelCelular(), cpfCnpj});
         }
     }
-    
+
     @Override
-    public void setVisible(boolean b) {
-        super.setVisible(b);
-        
-        atualizarTabela();
+    public void setEntidade(Cliente entidade) {
     }
 }

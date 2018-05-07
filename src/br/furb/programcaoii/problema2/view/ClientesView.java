@@ -5,9 +5,9 @@
  */
 package br.furb.programcaoii.problema2.view;
 
-import br.furb.programcaoii.problema2.classes.Cliente;
-import br.furb.programcaoii.problema2.classes.ClientePessoaFisica;
-import br.furb.programcaoii.problema2.classes.ClientePessoaJuridica;
+import br.furb.programcaoii.problema2.model.Cliente;
+import br.furb.programcaoii.problema2.model.ClientePessoaFisica;
+import br.furb.programcaoii.problema2.model.ClientePessoaJuridica;
 import br.furb.programcaoii.problema2.controller.ClienteController;
 import br.furb.programcaoii.problema2.factory.ControllerFactory;
 import br.furb.programcaoii.problema2.factory.ViewFactory;
