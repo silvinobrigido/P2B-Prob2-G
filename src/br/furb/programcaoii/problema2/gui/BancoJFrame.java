@@ -1,8 +1,8 @@
 
 package br.furb.programcaoii.problema2.gui;
 
-import br.furb.programcaoii.problema2.classes.ClientePessoaFisica;
-import br.furb.programcaoii.problema2.classes.ClientePessoaJuridica;
+import br.furb.programcaoii.problema2.model.ClientePessoaFisica;
+import br.furb.programcaoii.problema2.model.ClientePessoaJuridica;
 import javax.swing.JOptionPane;
 
 

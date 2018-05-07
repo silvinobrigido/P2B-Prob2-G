@@ -1,6 +1,6 @@
 package br.furb.programcaoii.problema2.dao;
 
-import br.furb.programcaoii.problema2.classes.Cliente;
+import br.furb.programcaoii.problema2.model.Cliente;
 import br.furb.programcaoii.problema2.exception.RegistroNaoEncontradoException;
 import java.util.Set;
 

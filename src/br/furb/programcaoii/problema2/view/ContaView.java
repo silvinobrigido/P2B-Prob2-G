@@ -5,8 +5,8 @@
  */
 package br.furb.programcaoii.problema2.view;
 
-import br.furb.programcaoii.problema2.classes.Cliente;
-import br.furb.programcaoii.problema2.classes.ContaCorrente;
+import br.furb.programcaoii.problema2.model.Cliente;
+import br.furb.programcaoii.problema2.model.ContaCorrente;
 import br.furb.programcaoii.problema2.controller.ClienteController;
 import br.furb.programcaoii.problema2.controller.ContaCorrenteController;
 import br.furb.programcaoii.problema2.factory.ControllerFactory;
