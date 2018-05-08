@@ -1,4 +1,4 @@
-Observer
+ConcreteObserver
  -> ContaCorrenteObserver
  -> Notificacao
  -> OfertaFinanciamento
@@ -6,8 +6,14 @@ Observer
  -> AnaliseInvestimento
  -> BaixaAutomatica
 
-Observable
+Observer
+ -> java.util.Observer
+
+ConcreteSubject
  -> ContaCorrente
+
+Subject 
+ -> java.util.Observable
 
 DAO
  -> DAO
