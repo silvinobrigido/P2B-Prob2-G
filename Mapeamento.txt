@@ -1,1 +1,35 @@
+Observer
+ -> ContaCorrenteObserver
+ -> Notificacao
+ -> OfertaFinanciamento
+ -> AnaliseFluxoCaixa
+ -> AnaliseInvestimento
+ -> BaixaAutomatica
 
+Observable
+ -> ContaCorrente
+
+DAO
+ -> DAO
+ -> ContaCorrenteDAO
+ -> ClienteDAO
+ -> CacheDAO
+
+Controller
+ -> Controller
+ -> ClienteController
+ -> ContaCorrenteController
+
+Factory
+ -> ControllerFactory
+ -> ViewFactory
+
+View
+ -> View
+ -> BancoView
+ -> ClienteView
+ -> ClientesView
+ -> ConsoleServicosView
+ -> ContaView
+ -> ContasView
+ -> OperacoesView

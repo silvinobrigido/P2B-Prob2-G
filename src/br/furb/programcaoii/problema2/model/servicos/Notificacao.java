@@ -18,7 +18,7 @@ public class Notificacao extends ContaCorrenteObserver {
         this.tipoNotificacao = tipoNotificacao;
     }
     
-     @Override
+    @Override
     public void update(ContaCorrente contaCorrente, Operacao operacao) {
         StringBuilder sb = new StringBuilder();
 
