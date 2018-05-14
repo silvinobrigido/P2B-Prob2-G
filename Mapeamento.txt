@@ -22,7 +22,7 @@ DAO
  -> ContaCorrenteDAO
  -> ClienteDAO
  -> CacheDAO
-
+ 
 Controller
  -> Controller
  -> ClienteController
@@ -41,3 +41,10 @@ View
  -> ContaView
  -> ContasView
  -> OperacoesView
+
+
+--> Prof. Marcel: Cada problema recebe uma nota de 0,0 a 3,0.
+A soma dos 3 problemas mais a avaliação sobre a colaboração no trabalho em equipe define a nota de cada aluno.
+Problema - Notas Equipe G
+1	    2,8
+2	    3,0
