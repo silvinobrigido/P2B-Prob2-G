@@ -1,3 +1,5 @@
+--> Prof. Marcel: Parabéns!
+
 ConcreteObserver
  -> Notificacao
  -> OfertaFinanciamento
